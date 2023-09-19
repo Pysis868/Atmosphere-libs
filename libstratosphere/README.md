@@ -6,6 +6,34 @@ It is built around extending [libnx](https://github.com/switchbrew/libnx).
 
 It also provides bindings for custom extensions to Horizon OS implemented by [Atmosphère](https://github.com/Atmosphere-NX).
 
+Building
+=====
+- External Dependencies:
+  - All target platforms:
+    - `jpeglib.h`
+      - References:
+        - `libstratosphere/source/capsrv/server/jpeg/capsrv_server_jpeg_library_types.hpp`
+      - Packages:
+        - Fedora/DNF: `libjpeg-turbo-devel`
+        - Cygwin    : `libjpeg-devel`
+    - `bfd.h`
+      - References:
+        - `libstratosphere/source/diag/impl/diag_symbol_impl.os.generic.cpp`
+      - Packages:
+        - Fedora/DNF: `binutils-devel`
+        - Cygwin    : `binutils`
+  - Windows:
+    - `Windows.h`
+      - References:
+        - `libstratosphere/include/stratosphere/windows.hpp`
+      - Packages:
+        - Fedora/DNF: `MinGW`?
+        - Cygwin    : `mingw64-x86_64-gcc-g++`?
+        - Windows   : `MSVS/MSVC/MinGW`?
+- Output:
+  - Linux   : `out/generic_linux_x64/release/hac2l`
+  - Windows : `out/generic_windows_x64/release/hac2l`
+
 Licensing
 =====
 
