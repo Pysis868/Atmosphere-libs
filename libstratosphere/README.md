@@ -6,6 +6,47 @@ It is built around extending [libnx](https://github.com/switchbrew/libnx).
 
 It also provides bindings for custom extensions to Horizon OS implemented by [Atmosphère](https://github.com/Atmosphere-NX).
 
+Building
+=====
+- External Dependencies:
+  - All target platforms:
+    - `bfd.h`
+      - References:
+        - `libstratosphere/source/diag/impl/diag_symbol_impl.os.generic.cpp`
+      - Packages:
+        - Fedora/DNF: `binutils-devel`
+        - Cygwin    : `binutils`
+    - `jpeglib.h`
+      - References:
+        - `libstratosphere/source/capsrv/server/jpeg/capsrv_server_jpeg_library_types.hpp`
+      - Packages:
+        - Fedora/DNF: `libjpeg-turbo-devel`
+        - Cygwin    : `libjpeg-devel`
+    - `vapours.hpp`
+      - References:
+        - Many.  One: `libstratosphere/include/stratosphere.hpp`
+      - Packages:
+        - All       : `../libvapours`
+  - Windows:
+    - `Windows.h`
+      - References:
+        - `libstratosphere/include/stratosphere/windows.hpp`
+      - Packages:
+        - Fedora/DNF: `MinGW`?
+        - Cygwin    : `mingw64-x86_64-gcc-g++`?
+        - Windows   : `MSVS/MSVC/MinGW`?
+      - Notes:
+        - Contains the C Runtime ((U)CRT) from Microsoft,
+          - for the `_wsplitpath_s` function,
+          - and possibly the `swprintf_s` function as well.
+- Commands
+  - Cygwin  : `make linux_x64_release`?
+  - Linux   : `make linux_x64_release`
+  - Windows : `make win_x64_release`?
+- Output:
+  - Linux   : `lib/generic_linux_x64/release/libstratosphere.a`
+  - Windows : `out/generic_linux_x64/release/libstratosphere.a`
+
 Licensing
 =====
 
