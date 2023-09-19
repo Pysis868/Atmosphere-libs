@@ -10,18 +10,23 @@ Building
 =====
 - External Dependencies:
   - All target platforms:
-    - `jpeglib.h`
-      - References:
-        - `libstratosphere/source/capsrv/server/jpeg/capsrv_server_jpeg_library_types.hpp`
-      - Packages:
-        - Fedora/DNF: `libjpeg-turbo-devel`
-        - Cygwin    : `libjpeg-devel`
     - `bfd.h`
       - References:
         - `libstratosphere/source/diag/impl/diag_symbol_impl.os.generic.cpp`
       - Packages:
         - Fedora/DNF: `binutils-devel`
         - Cygwin    : `binutils`
+    - `jpeglib.h`
+      - References:
+        - `libstratosphere/source/capsrv/server/jpeg/capsrv_server_jpeg_library_types.hpp`
+      - Packages:
+        - Fedora/DNF: `libjpeg-turbo-devel`
+        - Cygwin    : `libjpeg-devel`
+    - `vapours.hpp`
+      - References:
+        - Many.  One: `libstratosphere/include/stratosphere.hpp`
+      - Packages:
+        - All       : `../libvapours`
   - Windows:
     - `Windows.h`
       - References:
@@ -30,9 +35,17 @@ Building
         - Fedora/DNF: `MinGW`?
         - Cygwin    : `mingw64-x86_64-gcc-g++`?
         - Windows   : `MSVS/MSVC/MinGW`?
+      - Notes:
+        - Contains the C Runtime ((U)CRT) from Microsoft,
+          - for the `_wsplitpath_s` function,
+          - and possibly the `swprintf_s` function as well.
+- Commands
+  - Cygwin  : `make linux_x64_release`?
+  - Linux   : `make linux_x64_release`
+  - Windows : `make win_x64_release`?
 - Output:
-  - Linux   : `out/generic_linux_x64/release/hac2l`
-  - Windows : `out/generic_windows_x64/release/hac2l`
+  - Linux   : `lib/generic_linux_x64/release/libstratosphere.a`
+  - Windows : `out/generic_linux_x64/release/libstratosphere.a`
 
 Licensing
 =====
